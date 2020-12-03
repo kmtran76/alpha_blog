@@ -13,6 +13,9 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    # this is for the validation to not complain
+    # when first time load the new.html.erb 
+    @article = Article.new
   end
 
   def create
@@ -23,13 +26,16 @@ class ArticlesController < ApplicationController
     @article = Article.new(params.require(:article).permit(:title, :description))
     
     #render plain: @article.inspect
-    @article.save 
+    if @article.save 
+      flash[:notice] = "Article was created sucessfully."
+      # (rails routes --expanded) tell you the show route is using prefix article
+      # to use the prefix you need to append the _path
+      redirect_to article_path(@article)
 
-    # (rails routes --expanded) tell you the show route is using prefix article
-    # to use the prefix you need to append the _path
-    redirect_to article_path(@article)
-
-    # shortern path has the same affect as redirect_to article_path(@article)
-    # redirect_to @article
+      # shortern path has the same affect as redirect_to article_path(@article)
+      # redirect_to @article
+    else
+      render 'new'
+    end
   end
 end
