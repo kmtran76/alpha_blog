@@ -1,11 +1,18 @@
 class ArticlesController < ApplicationController
+  
+  # this help with DRY (don't repeat yourself) scheme
+  # mean run set_article method before any other action
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def show
 
     # @ converts the regular variable into an instance variable so
     # it can be used in the view(UI)
     
     # byebug
-    @article = Article.find(params[:id])
+    
+    # comment out because we use before_action above
+    # @article = Article.find(params[:id])          
   end
 
   def index
@@ -20,7 +27,8 @@ class ArticlesController < ApplicationController
 
   def edit
     # byebug
-    @article = Article.find(params[:id])
+    # comment out because we use before_action above
+    # @article = Article.find(params[:id])
   end
 
   def create
@@ -28,11 +36,13 @@ class ArticlesController < ApplicationController
     
     # need to whitelist the title and description from article key 
     # otherwise it wont work
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(article_params)
     
     #render plain: @article.inspect
     if @article.save 
+      # another one is flash[:alert], use to alert if something goes wrong
       flash[:notice] = "Article was created sucessfully."
+
       # (rails routes --expanded) tell you the show route is using prefix article
       # to use the prefix you need to append the _path
       redirect_to article_path(@article)
@@ -45,8 +55,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
-    if @article.update(params.require(:article).permit(:title, :description))
+    # comment out because we use before_action above
+    # @article = Article.find(params[:id])
+    if @article.update(article_params)
       flash[:notice] = "Article was updated sucessfully."
       redirect_to article_path(@article)
     else 
@@ -55,8 +66,21 @@ class ArticlesController < ApplicationController
   end
 
   def destroy 
-    @article = Article.find(params[:id])
+    # comment out because we use before_action above
+    # @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path
+  end
+
+  # anything below this is private
+  # these methods help reduce redundancy or DRY
+  private
+
+  def set_article
+    @article = Article.find(params[:id]) 
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :description)
   end
 end

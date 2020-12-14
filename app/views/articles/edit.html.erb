@@ -1,5 +1,7 @@
 <h1>Edit article</h1>
 
+<!-- The entire code below will be move into _form.html.erb (a.k.a form partial) file
+
 <% if @article.errors.any?%>
 <h2>The following errors prevented the article from being saved</h2>
   <ul>
@@ -25,5 +27,9 @@
   </p>
 
 <%end%>
+
+-->
+
+<%= render 'form'%>
 
 <%=link_to 'Return to articles listing', articles_path%>

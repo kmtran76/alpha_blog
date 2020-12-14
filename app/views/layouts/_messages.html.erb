@@ -1,0 +1,7 @@
+<!-- 1> this is a partial file user to reduce redundancy 
+     2> have to start the file with an _ for naming convention so rails understand that it is a partial
+     3> now we can reference this file look at application.html.erb
+-->
+<% flash.each do |name, msg| %>
+    <%= msg%>
+<%end%>
