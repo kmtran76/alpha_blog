@@ -1,0 +1,69 @@
+/* 
+** Now to add custom styles to the app styling, create a new file within this 
+folder (app/assets/stylesheets folder) and call it custom.css.scss
+** Here import the bootstrap library first so you are able to modify styles 
+for not just your new classes but existing bootstrap classes as well  
+*/ 
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#home-container {
+  margin-top: 25px
+}
+
+/* asset-url() tells rails to look for file name under app/asset/images folder */
+.jumbotron {
+  background-image: asset-url('cliff-johnson-unsplash.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+
+/* Sticky Footer Classes */
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+/*
+.navbar-brand {
+  font-size: 3rem;
+}
+
+h1 {
+  color: red;
+}
+*/

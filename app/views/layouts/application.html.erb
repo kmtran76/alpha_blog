@@ -9,7 +9,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <!--class="d-flex flex-column" is for sticky footer -->
+  <body class="d-flex flex-column">
+    
+    <%= render 'layouts/navigation'%>
     <!-- Notice we dont reference the messages partial (_messages.html.erb) with an _ -->
     <%= render 'layouts/messages'%>
     <%= yield %>
