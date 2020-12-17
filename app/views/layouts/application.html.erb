@@ -13,8 +13,15 @@
   <body class="d-flex flex-column">
     
     <%= render 'layouts/navigation'%>
-    <!-- Notice we dont reference the messages partial (_messages.html.erb) with an _ -->
-    <%= render 'layouts/messages'%>
-    <%= yield %>
+    <%# 
+    id="page-content" is for sticky footer 
+    (https://startbootstrap.com/snippets/sticky-footer-flexbox)
+    %>
+    <div id="page-content">
+      <!-- Notice we dont reference the messages partial (_messages.html.erb) with an _ -->
+      <%= render 'layouts/messages'%>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer'%>
   </body>
 </html>
