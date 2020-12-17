@@ -2,6 +2,14 @@
      2> have to start the file with an _ for naming convention so rails understand that it is a partial
      3> now we can reference this file look at application.html.erb
 -->
-<% flash.each do |name, msg| %>
-    <%= msg%>
-<%end%>
+<div class="container">
+    <% flash.each do |name, msg| %>
+        <!-- Notice we bootstrap alert and dismissing class-->
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= msg%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%end%>
+</div>
