@@ -37,7 +37,8 @@ class ArticlesController < ApplicationController
     # need to whitelist the title and description from article key 
     # otherwise it wont work
     @article = Article.new(article_params)
-    
+    @article.user = User.first
+
     #render plain: @article.inspect
     if @article.save 
       # another one is flash[:alert], use to alert if something goes wrong

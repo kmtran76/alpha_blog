@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :articles
   # can read more at https://guides.rubyonrails.org/active_record_validations.html
   validates :username, presence: true, 
                        uniqueness: { case_sensitive: false }, 

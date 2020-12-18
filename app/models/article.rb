@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  belongs_to :user
   # This automaticly give getter/setter methods
   # but need enforce validation and contraint 
   validates :title, presence: true, length: {minimum: 6, maximum: 100}
