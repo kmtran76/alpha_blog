@@ -10,4 +10,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }, 
                     length: {maximum: 105},
                     format: {with: VALID_EMAIL_REGEX}
+
+  # can read more here https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
+  has_secure_password
 end
