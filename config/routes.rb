@@ -5,4 +5,13 @@ Rails.application.routes.draw do
   # resources :articles, only: [:show, :index, :new, :create, :edit, :update, :destroy]
   # short hand below
   resources :articles
+
+  # do this so instead of localhost:3000/users/new we'll get localhost:3000/signup
+  get 'signup', to: 'users#new'
+  
+  # One way to define users path is below
+  # post 'users', to 'users#create'
+
+  # 2nd way to define path for users since we already define 'signup', to: 'users#new' above
+  resources :users, except: [:new]    
 end
