@@ -27,12 +27,12 @@
           <%= f.label :password, class: "col-2 col-form-label text-light" %>
           <!-- bootstrap divides grids into 12 columns so col-10 mean use 10 columns -->
           <div class="col-10">
-            <%= f.password_field :email, class: "form-control shadow rounded", placeholder: "Choose a password"%>
+            <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Choose a password"%>
           </div>
         </div>
 
         <div class="form-group row justify-content-center">
-          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+          <%= f.submit "Sign up", class: "btn btn-outline-light btn-lg" %>
         </div>
       <%end%>
     
