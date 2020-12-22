@@ -16,7 +16,9 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
+    # @articles = Article.all
+    # use will_paginate gem below https://github.com/mislav/will_paginate
+    @articles = Article.paginate(page: params[:page], per_page:2)
   end
 
   def new

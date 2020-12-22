@@ -1,6 +1,21 @@
 <h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
 <!-- Note gravatar_for is a method we define in /helpers/application_helper.rb -->
-<%= gravatar_for @user, size: 200%>
+<!-- not sure why but you can also write without () when reference gravator_for -->
+<%= gravatar_for @user, size: 200 %>
+
+<div class="text-center mt-4">
+  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-success" %>
+</div>
 
 <h1 class="text-center mt-4">Articles</h1>
+
+<!-- <%= will_paginate @articles %>  Replace with the better styling below -->
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
 <%= render 'articles/article'%>
+
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>
