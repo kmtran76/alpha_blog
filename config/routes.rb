@@ -13,5 +13,10 @@ Rails.application.routes.draw do
   # post 'users', to 'users#create'
 
   # 2nd way to define path for users since we already define 'signup', to: 'users#new' above
-  resources :users, except: [:new]    
+  resources :users, except: [:new] 
+  
+  # sessions controller wont hit the db so we manually create these routes below
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'session#destroy'
 end
