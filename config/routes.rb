@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   # sessions controller wont hit the db so we manually create these routes below
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  delete 'logout', to: 'session#destroy'
+  delete 'logout', to: 'sessions#destroy'
 end
