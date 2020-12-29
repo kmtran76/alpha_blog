@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
-  has_many :articles
+
+  # dependent: :destroy would delete all children
+  has_many :articles, dependent: :destroy
+  
   # can read more at https://guides.rubyonrails.org/active_record_validations.html
   validates :username, presence: true, 
                        uniqueness: { case_sensitive: false }, 

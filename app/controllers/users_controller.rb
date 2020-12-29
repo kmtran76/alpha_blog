@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # Note: 1. ordering of these 2 are important since the code execute in a top down format
   #       2. require_user is a helper method in application_controller.rb 
   #       3. require_same_user is just a private method
-  before_action :require_user, except: [:show, :index]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def show    
     # @articles = @user.articles
@@ -48,6 +48,13 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy 
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "Account and all associated articles successfully deleted"
+    redirect_to articles_path
+  end
+
   private
 
   def user_params
