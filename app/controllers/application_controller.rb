@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
+  # Note: all helper methods in here would be available to all controllers
 
+
+  # declare this below will make those 2 helper methods available to 
+  # all the views to use as well.
   helper_method :current_user, :logged_in?
 
   def current_user    

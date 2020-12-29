@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
+  # Note: 1. ordering of these 2 are important since the code execute in a top down format
+  #       2. require_user is a helper method in application_controller.rb 
+  #       3. require_same_user is just a private method
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update]
+
   def show    
     # @articles = @user.articles
     # use will_paginate gem below https://github.com/mislav/will_paginate
@@ -51,4 +57,11 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = "You can only edit your own account"
+      redirect_to @user
+    end 
+  end 
 end

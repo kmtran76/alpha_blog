@@ -4,7 +4,9 @@ class ArticlesController < ApplicationController
   # mean run set_article method before any other action
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   
-  # Note: ordering of these 2 are important since the code execute in a top down format
+  # Note: 1. ordering of these 2 are important since the code execute in a top down format
+  #       2. require_user is a helper method in application_controller.rb 
+  #       3. require_same_user is just a private method
   before_action :require_user, except: [:show, :index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
