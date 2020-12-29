@@ -3,7 +3,10 @@
 
 <!-- <%= will_paginate @articles %>  Replace with the better styling below -->
 <div class="flickr_pagination">
-  <%= will_paginate @articles, :container => false %>
+  <!-- Note: :container => false is part of the flickfr_pagination 
+      http://mislav.github.io/will_paginate */
+  -->
+  <%= will_paginate @articles, :container => false %>        
 </div>
 
 <!-- render the article partial-->

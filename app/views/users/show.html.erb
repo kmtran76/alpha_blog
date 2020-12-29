@@ -3,9 +3,11 @@
 <!-- not sure why but you can also write without () when reference gravator_for -->
 <%= gravatar_for @user, size: 200 %>
 
-<div class="text-center mt-4">
-  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-success" %>
-</div>
+<% if logged_in? && @user == current_user%>
+  <div class="text-center mt-4">
+    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-success" %>
+  </div>
+<% end %>
 
 <h1 class="text-center mt-4">Articles</h1>
 

@@ -26,7 +26,9 @@
             <!-- Note: pluralize() is a rail method-->
             <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
             <%= link_to "View profile", user, class: "btn btn-outline-success" %>
-            <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info" %>           
+            <% if logged_in? and user == current_user %>
+              <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info" %>           
+            <% end %>
           </div>
           <div class="card-footer text-muted">
             <%# handy method (time_ago_in_words) rails provides to format date, more user friendly%>
