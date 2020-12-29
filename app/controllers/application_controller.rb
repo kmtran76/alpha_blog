@@ -18,4 +18,11 @@ class ApplicationController < ActionController::Base
     # into a boolean.  Will return true or false base on current_user
     !!current_user
   end
+
+  def require_user
+    if !logged_in? 
+      flash[:alert] = "You must be logged in to perform that action"
+      redirect_to login_path
+    end
+  end 
 end
