@@ -4,7 +4,9 @@
 <!-- <%= will_paginate @articles %>  Replace with the better styling below -->
 <div class="flickr_pagination">
   <!-- Note: :container => false is part of the flickfr_pagination 
-      http://mislav.github.io/will_paginate */
+      http://mislav.github.io/will_paginate
+
+      Also need to update the controller for this to work
   -->
   <%= will_paginate @articles, :container => false %>        
 </div>
