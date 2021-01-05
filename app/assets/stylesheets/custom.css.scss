@@ -24,7 +24,7 @@ for not just your new classes but existing bootstrap classes as well
 }
 
 #home-container {
-  margin-top: 25px
+  margin-top: 25px;
 }
 
 /* asset-url() tells rails to look for file name under app/asset/images folder */
@@ -67,7 +67,7 @@ body {
   cursor: default; }
   .flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
     padding: 0.2em 0.5em; 
-    border-radius: 5px
+    border-radius: 5px;
   }
   .flickr_pagination .disabled {
     color: #aaaaaa; }
