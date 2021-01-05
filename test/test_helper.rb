@@ -11,4 +11,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # Note now we can use this method in any test for example categories_controller_test.rb
+  def sign_in_as(user)
+    post login_path, params: { session: { email: user.email, password: "password" } }
+  end
 end

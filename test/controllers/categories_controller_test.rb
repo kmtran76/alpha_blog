@@ -5,6 +5,8 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     # @category = categories(:one)
     # @category = Category.new(name: "Sports")
     @category = Category.create(name: "Sports")
+    @admin_user = User.create(username: "johndoe", email: "johndoe@example.com",
+                              password: "password", admin: true)
   end
 
   test "should get index" do
@@ -13,16 +15,33 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    # Note: sign_in_as is define in test_helper.rb
+    # Note: after each test the data is scrubbed so we have to log in again for every test
+    sign_in_as(@admin_user)
+    
     get new_category_url
     assert_response :success
   end
 
   test "should create category" do
+    # Note: sign_in_as is define in test_helper.rb
+    # Note: after each test the data is scrubbed so we have to log in again for every test
+    sign_in_as(@admin_user)
+
     assert_difference('Category.count', 1) do
       post categories_url, params: { category: { name: "Travel" } }
     end
-
+    # Note redirect to category show page
     assert_redirected_to category_url(Category.last)
+  end
+
+  test "should not create category if not admin" do
+    assert_no_difference('Category.count') do
+      post categories_url, params: { category: { name: "Travel" } }
+    end
+
+    # Note redirect to category listing page
+    assert_redirected_to categories_url
   end
 
   test "should show category" do
