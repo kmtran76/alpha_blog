@@ -1,9 +1,13 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
+  # one to many relationship
   # dependent: :destroy would delete all children articles
   has_many :articles, dependent: :destroy
   
+  # many to many relationship
+  
+
   # can read more at https://guides.rubyonrails.org/active_record_validations.html
   validates :username, presence: true, 
                        uniqueness: { case_sensitive: false }, 
