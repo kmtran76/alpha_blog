@@ -17,11 +17,13 @@ class CategoriesController < ApplicationController
 
   def index 
     # use will_paginate gem below https://github.com/mislav/will_paginate
-    @categories = Category.paginate(page: params[:page], per_page:2)
+    @categories = Category.paginate(page: params[:page], per_page:2)    
   end
 
   def show 
     @category = Category.find(params[:id])
+    # use will_paginate gem below https://github.com/mislav/will_paginate
+    @articles =  @category.articles.paginate(page: params[:page], per_page:2)
   end
   
   private
