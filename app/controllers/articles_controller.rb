@@ -40,6 +40,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    byebug
     # render plain: params[:article]
     
     # need to whitelist the title and description from article key 
@@ -90,7 +91,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   def require_same_user
