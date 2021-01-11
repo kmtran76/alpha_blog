@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     # render plain: params[:article]
     
     # need to whitelist the title and description from article key 
